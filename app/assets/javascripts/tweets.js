@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
   var tweet     = document.querySelector('#new_tweet')
   var list      = document.querySelector('.tweets')
   var firstLi   = document.querySelector('li')
-  var timeStamp = dateObj.getTime()
+  var button    = document.querySelector('#create-tweet')
+
 
   tweet.addEventListener('submit', function (eventObject) {
 
@@ -22,15 +23,17 @@ document.addEventListener("DOMContentLoaded", function() {
       var li = document.createElement('li');
         li.className = 'tweet'
       var p = document.createElement('p')
-        p.innerText = data.message
+        p.innerText = data.tweet.message
       var time =  document.createElement('time')
-        time.innerText = timeStamp
+        time.innerText = data.time
 
       li.appendChild(p);
       li.appendChild(time);
 
       list.insertBefore(li, firstLi);
 
+      button.removeAttribute('data-disable-with')
+      button.removeAttribute('disabled')
       tweet.reset()
     })
   })

@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
           redirect_to root_path
         end
         format.json do
-          render json: @tweet
+          render json: {tweet: @tweet, time: @tweet.created_at.strftime('%b %e, %l:%M %p')}
         end
       end
     else
